@@ -1,0 +1,36 @@
+{
+  "name": "loopback-soap",
+  "version": "1.0.0",
+  "description": "Integration between LoopBack and SOAP API specs",
+  "engines": {
+    "node": ">=4"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo no tests yet && exit 0",
+    "lint": "eslint .",
+    "posttest": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/strongloop/loopback-soap.git"
+  },
+  "keywords": [
+    "StrongLoop Labs",
+    "loopback",
+    "api",
+    "soap"
+  ],
+  "author": "Rashmi Hunt",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/strongloop/loopback-soap/issues"
+  },
+  "devDependencies": {
+    "eslint": "^3.12.2",
+    "eslint-config-loopback": "^7.0.0"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+  }
+}
