@@ -1,0 +1,51 @@
+{
+  "fooRq": {
+    "name": "fooRq",
+    "properties": {
+      "paymentRq": {
+        "type": "paymentRq"
+      }
+    }
+  },
+  "paymentRq": {
+    "name": "paymentRq",
+    "properties": {
+      "bankSvcRq": {
+        "type": "bankSvcRq"
+      }
+    }
+  },
+  "bankSvcRq": {
+    "name": "bankSvcRq",
+    "properties": {
+      "requestUID": {
+        "type": "string"
+      }
+    }
+  },
+  "fooRs": {
+    "name": "fooRs",
+    "properties": {
+      "paymentRs": {
+        "type": "paymentRs"
+      }
+    }
+  },
+  "paymentRs": {
+    "name": "paymentRs",
+    "properties": {
+      "bankSvcRs": {
+        "type": "bankSvcRs"
+      }
+    }
+  },
+  "bankSvcRs":
+  {
+    "name": "bankSvcRs",
+    "properties": {
+      "requestUID": {
+        "type": "string"
+      }
+    }
+  }
+}

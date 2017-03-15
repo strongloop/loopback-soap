@@ -1,0 +1,41 @@
+{
+  "DummyRequest": {
+    "name": "DummyRequest",
+    "properties": {
+      "DummyField1": {
+        "type": "string"
+      },
+      "DummyField2": {
+        "type": "string"
+      }
+    }
+  },
+  "DummyResponse": {
+    "name": "DummyResponse",
+    "properties": {
+      "DummyResult": {
+        "type": "ContactMedium2"
+      }
+    }
+  },
+  "ContactMedium2": {
+    "name": "ContactMedium2",
+    "properties": {
+      "validFor": {
+        "type": "date"
+      },
+      "preference": {
+        "type": "integer"
+      },
+      "Address": {
+        "type": "string"
+      },
+      "Email": {
+        "type": "string"
+      },
+      "Telephone": {
+        "type": "string"
+      }
+    }
+  }
+}
