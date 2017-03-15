@@ -4,7 +4,6 @@
 // License text available at https://opensource.org/licenses/MIT
 
 var SoapGenerator = require('./lib/codegen/generator-soap');
-var generateModels = require('./lib/codegen/json-schema');
 
 
 function getGenerator() {
