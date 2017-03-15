@@ -1,0 +1,10 @@
+{
+  "OneWayRequest": {
+    "name": "OneWayRequest",
+    "properties": {
+      "OneWayField": {
+        "type": "string"
+      }
+    }
+  }
+}

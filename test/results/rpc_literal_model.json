@@ -1,0 +1,13 @@
+{
+  "myMethod": {
+    "name": "myMethod",
+    "properties": {
+      "x": {
+        "type": "int"
+      },
+      "y": {
+        "type": "float"
+      }
+    }
+  }
+}

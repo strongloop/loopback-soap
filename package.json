@@ -1,13 +1,13 @@
 {
   "name": "loopback-soap",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.1",
   "description": "Integration between LoopBack and SOAP API specs",
   "engines": {
     "node": ">=4"
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo no tests yet && exit 0",
+    "test": "mocha",
     "lint": "eslint .",
     "posttest": "npm run lint"
   },
@@ -27,10 +27,22 @@
     "url": "https://github.com/strongloop/loopback-soap/issues"
   },
   "devDependencies": {
+    "chai": "^3.2.0",
     "eslint": "^3.12.2",
-    "eslint-config-loopback": "^7.0.0"
+    "eslint-config-loopback": "^7.0.1",
+    "loopback": "^3.0.0",
+    "mocha": "^2.3.0"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "dependencies": {
+    "curl": "^0.1.4",
+    "spawn-sync": "1.0.15",
+    "async": "^1.4.2",
+    "debug": "^2.2.0",
+    "ejs": "^2.5.5",
+    "lodash": "^3.10.1",
+    "strong-globalize": "^2.6.0",
+    "strong-soap": "^1.0.1",
+    "underscore.string": "~2.3.3"
   }
 }
