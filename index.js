@@ -3,8 +3,9 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-var SoapGenerator = require('./lib/codegen/generator-soap');
+'use strict';
 
+var SoapGenerator = require('./lib/codegen/generator-soap');
 
 function getGenerator() {
   var generator = new SoapGenerator();
@@ -18,7 +19,7 @@ function getGenerator() {
  * @returns {String}
  */
 exports.generateRemoteMethods = function(spec, options) {
-  return getGenerator(spec).generateRemoteMethods(spec, options);
+  return getGenerator().generateRemoteMethods(spec, options);
 };
 
 /**
@@ -29,7 +30,7 @@ exports.generateRemoteMethods = function(spec, options) {
  * @returns {String}
  */
 exports.generateCode = function(version, modelName, operations) {
-  return getGenerator(spec).generateCodeForOperations(modelName, operations);
+  return getGenerator().generateCodeForOperations(modelName, operations);
 };
 
 /**
@@ -43,5 +44,4 @@ exports.generateModels = function(wsdl, operations, options) {
 };
 
 exports.getGenerator = getGenerator;
-
 
