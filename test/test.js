@@ -36,10 +36,7 @@ describe('Generate APIs and models with WSDLs containing ', function() {
         };
 
         var code = helper.generateRemoteMethods(apiData);
-        // console.log(code);
-
         var generatedModels = helper.generateModels(wsdl, operations);
-        // console.log(util.inspect(generatedModels, {depth: null}));
 
           // check for API/operation signature in generated code
         var index = code.indexOf('StockQuoteServiceStockQuoteBinding.GetQuote = function(GetQuote, callback)'); // eslint-disable-line max-len
@@ -80,10 +77,7 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          // console.log(code);
-
           var generatedModels = helper.generateModels(wsdl, operations);
-          // console.log(util.inspect(generatedModels, {depth: null}));
 
             // check for API/operation signature in generated code
           var index = code.indexOf('periodictableperiodictableSoap.GetAtomicWeight = function(GetAtomicWeight, callback)'); // eslint-disable-line max-len
@@ -125,10 +119,7 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          // console.log(code);
-
           var generatedModels = helper.generateModels(wsdl, operations);
-          // console.log(util.inspect(generatedModels, {depth: null}));
 
             // check for API/operation signature in generated code
           var index = code.indexOf('RPCLiteralServiceRPCLiteralTestBinding.myMethod = function(myMethod, callback)'); // eslint-disable-line max-len
@@ -166,10 +157,7 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          // console.log(code);
-
           var generatedModels = helper.generateModels(wsdl, operations);
-          // console.log(util.inspect(generatedModels, {depth: null}));
 
             // check for API/operation signature in generated code
           var index = code.indexOf('foofoo_Binding.fooOp = function(fooRq, callback)');
@@ -206,10 +194,7 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          // console.log(code);
-
           var generatedModels = helper.generateModels(wsdl, operations);
-          // console.log(util.inspect(generatedModels, {depth: null}));
 
           // check for API/operation signature in generated code
           var index = code.indexOf('DummyServiceDummyBinding.Dummy = function(DummyRequest, callback)'); // eslint-disable-line max-len
@@ -245,10 +230,7 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          // console.log(code);
-
           var generatedModels = helper.generateModels(wsdl, operations);
-          // console.log(util.inspect(generatedModels, {depth: null}));
 
             // check for API/operation signature in generated code
           var index = code.indexOf('OneWayServiceOneWayBinding.OneWay = function(OneWayRequest, callback)'); // eslint-disable-line max-len
@@ -284,11 +266,11 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          // console.log(code);
+          console.log(code);
 
           // TODO [rashmi] Revisit. Currently strong-soap returns xs:any type as 0 element which results in empty properties {} list in the model.
           var generatedModels = helper.generateModels(wsdl, operations);
-          // console.log(util.inspect(generatedModels, {depth: null}));
+          console.log(util.inspect(generatedModels, {depth: null}));
 
             // check for API/operation signature in generated code
           var index = code.indexOf('USZipUSZipSoap12.GetInfoByAreaCode = function(GetInfoByAreaCode, callback)'); // eslint-disable-line max-len
