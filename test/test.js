@@ -13,7 +13,6 @@ var helper = require('../index');
 var assert = require('assert');
 var soap = require('strong-soap').soap;
 var WSDL = soap.WSDL;
-var expect = require('chai').expect;
 
 describe('Generate APIs and models with WSDLs containing ', function() {
   it('Document/Literal-wrapped with nested complex types', function(done) {
@@ -81,10 +80,10 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          //console.log(code);
+          // console.log(code);
 
           var generatedModels = helper.generateModels(wsdl, operations);
-          //console.log(util.inspect(generatedModels, {depth: null}));
+          // console.log(util.inspect(generatedModels, {depth: null}));
 
             // check for API/operation signature in generated code
           var index = code.indexOf('periodictableperiodictableSoap.GetAtomicWeight = function(GetAtomicWeight, callback)'); // eslint-disable-line max-len
@@ -126,10 +125,10 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          //console.log(code);
+          // console.log(code);
 
           var generatedModels = helper.generateModels(wsdl, operations);
-          //console.log(util.inspect(generatedModels, {depth: null}));
+          // console.log(util.inspect(generatedModels, {depth: null}));
 
             // check for API/operation signature in generated code
           var index = code.indexOf('RPCLiteralServiceRPCLiteralTestBinding.myMethod = function(myMethod, callback)'); // eslint-disable-line max-len
@@ -306,9 +305,8 @@ describe('Generate APIs and models with WSDLs containing ', function() {
   });
 });
 
-
 function readModelJsonSync(name) {
-    var modelJson = path.resolve(__dirname, 'results',  name);
-    expect(fs.existsSync(modelJson), 'file exists');
-    return JSON.parse(fs.readFileSync(modelJson));
+  var modelJson = path.resolve(__dirname, 'results',  name);
+  expect(fs.existsSync(modelJson), 'file exists');
+  return JSON.parse(fs.readFileSync(modelJson));
 }
