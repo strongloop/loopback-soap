@@ -1,5 +1,5 @@
-// Copyright IBM Corp. 2014,2016. All Rights Reserved.
-// Node module: generator-loopback
+// Copyright IBM Corp. 2017. All Rights Reserved.
+// Node module: loopback-soap
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
@@ -13,6 +13,7 @@ var helper = require('../index');
 var assert = require('assert');
 var soap = require('strong-soap').soap;
 var WSDL = soap.WSDL;
+var expect = require('chai').expect;
 
 describe('Generate APIs and models with WSDLs containing ', function() {
   it('Document/Literal-wrapped with nested complex types', function(done) {
@@ -36,10 +37,10 @@ describe('Generate APIs and models with WSDLs containing ', function() {
         };
 
         var code = helper.generateRemoteMethods(apiData);
-        console.log(code);
+        // console.log(code);
 
         var generatedModels = helper.generateModels(wsdl, operations);
-        console.log(util.inspect(generatedModels, {depth: null}));
+        // console.log(util.inspect(generatedModels, {depth: null}));
 
           // check for API/operation signature in generated code
         var index = code.indexOf('StockQuoteServiceStockQuoteBinding.GetQuote = function(GetQuote, callback)'); // eslint-disable-line max-len
@@ -48,10 +49,9 @@ describe('Generate APIs and models with WSDLs containing ', function() {
         index = code.indexOf("StockQuoteServiceStockQuoteBinding.remoteMethod('GetQuote',"); // eslint-disable-line max-len
         assert.ok(index > -1);
 
-        var expectedModels = path.resolve(__dirname, './results/stockquote_model.json');
-        expectedModels = require(expectedModels);
-          // verify generated models against expected
-        assert.equal(JSON.stringify(generatedModels), JSON.stringify(expectedModels));
+        // verify generated models against expected
+        var expectedModels = readModelJsonSync('stockquote_model.json');
+        expect(generatedModels).to.deep.equal(expectedModels);
         done();
       });
   });
@@ -81,15 +81,15 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          console.log(code);
+          //console.log(code);
 
           var generatedModels = helper.generateModels(wsdl, operations);
-          console.log(util.inspect(generatedModels, {depth: null}));
+          //console.log(util.inspect(generatedModels, {depth: null}));
 
             // check for API/operation signature in generated code
           var index = code.indexOf('periodictableperiodictableSoap.GetAtomicWeight = function(GetAtomicWeight, callback)'); // eslint-disable-line max-len
           assert.ok(index > -1);
-          var index = code.indexOf('periodictableperiodictableSoap.GetAtomicNumber = function(GetAtomicNumber, callback)'); // eslint-disable-line max-len
+          index = code.indexOf('periodictableperiodictableSoap.GetAtomicNumber = function(GetAtomicNumber, callback)'); // eslint-disable-line max-len
           assert.ok(index > -1);
             // check for beginning of REST API in generated code
           index = code.indexOf("periodictableperiodictableSoap.remoteMethod('GetAtomicWeight'"); // eslint-disable-line max-len
@@ -97,10 +97,9 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           index = code.indexOf("periodictableperiodictableSoap.remoteMethod('GetAtomicNumber'"); // eslint-disable-line max-len
           assert.ok(index > -1);
 
-          var expectedModels = path.resolve(__dirname, './results/periodictable_model.json');
-          expectedModels = require(expectedModels);
-            // verify generated models against expected
-          assert.equal(JSON.stringify(generatedModels), JSON.stringify(expectedModels));
+          // verify generated models against expected
+          var expectedModels = readModelJsonSync('periodictable_model.json');
+          expect(generatedModels).to.deep.equal(expectedModels);
           done();
         });
   });
@@ -127,10 +126,10 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          console.log(code);
+          //console.log(code);
 
           var generatedModels = helper.generateModels(wsdl, operations);
-          console.log(util.inspect(generatedModels, {depth: null}));
+          //console.log(util.inspect(generatedModels, {depth: null}));
 
             // check for API/operation signature in generated code
           var index = code.indexOf('RPCLiteralServiceRPCLiteralTestBinding.myMethod = function(myMethod, callback)'); // eslint-disable-line max-len
@@ -168,10 +167,10 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          console.log(code);
+          // console.log(code);
 
           var generatedModels = helper.generateModels(wsdl, operations);
-          console.log(util.inspect(generatedModels, {depth: null}));
+          // console.log(util.inspect(generatedModels, {depth: null}));
 
             // check for API/operation signature in generated code
           var index = code.indexOf('foofoo_Binding.fooOp = function(fooRq, callback)');
@@ -180,10 +179,9 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           index = code.indexOf("foofoo_Binding.remoteMethod('fooOp',");
           assert.ok(index > -1);
 
-          var expectedModels = path.resolve(__dirname, './results/foo_model_nested_ref.json');
-          expectedModels = require(expectedModels);
-            // verify generated models against expected
-          assert.equal(JSON.stringify(generatedModels), JSON.stringify(expectedModels));
+          // verify generated models against expected
+          var expectedModels = readModelJsonSync('foo_model_nested_ref.json');
+          expect(generatedModels).to.deep.equal(expectedModels);
 
           done();
         });
@@ -209,23 +207,21 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          console.log(code);
+          // console.log(code);
 
           var generatedModels = helper.generateModels(wsdl, operations);
-          console.log(util.inspect(generatedModels, {depth: null}));
+          // console.log(util.inspect(generatedModels, {depth: null}));
 
-            // check for API/operation signature in generated code
+          // check for API/operation signature in generated code
           var index = code.indexOf('DummyServiceDummyBinding.Dummy = function(DummyRequest, callback)'); // eslint-disable-line max-len
           assert.ok(index > -1);
-            // check for beginning of REST API in generated code
+          // check for beginning of REST API in generated code
           index = code.indexOf("DummyServiceDummyBinding.remoteMethod('Dummy'");
           assert.ok(index > -1);
 
-          var expectedModels = path.resolve(__dirname, './results/recursive_model.json');
-          expectedModels = require(expectedModels);
-            // verify generated models against expected
-          assert.equal(JSON.stringify(generatedModels), JSON.stringify(expectedModels));
-
+          // verify generated models against expected
+          var expectedModels = readModelJsonSync('recursive_model.json');
+          expect(generatedModels).to.deep.equal(expectedModels);
           done();
         });
   });
@@ -250,10 +246,10 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          console.log(code);
+          // console.log(code);
 
           var generatedModels = helper.generateModels(wsdl, operations);
-          console.log(util.inspect(generatedModels, {depth: null}));
+          // console.log(util.inspect(generatedModels, {depth: null}));
 
             // check for API/operation signature in generated code
           var index = code.indexOf('OneWayServiceOneWayBinding.OneWay = function(OneWayRequest, callback)'); // eslint-disable-line max-len
@@ -262,11 +258,9 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           index = code.indexOf("OneWayServiceOneWayBinding.remoteMethod('OneWay',");
           assert.ok(index > -1);
 
-          var expectedModels = path.resolve(__dirname, './results/oneway_model.json');
-          expectedModels = require(expectedModels);
-            // verify generated models against expected
-          assert.equal(JSON.stringify(generatedModels), JSON.stringify(expectedModels));
-
+          // verify generated models against expected
+          var expectedModels = readModelJsonSync('oneway_model.json');
+          expect(generatedModels).to.deep.equal(expectedModels);
           done();
         });
   });
@@ -291,11 +285,11 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          console.log(code);
+          // console.log(code);
 
-            // TODO [rashmi] Revisit. Currently strong-soap returns xs:any type as 0 element which results in empty properties {} list in the model.
+          // TODO [rashmi] Revisit. Currently strong-soap returns xs:any type as 0 element which results in empty properties {} list in the model.
           var generatedModels = helper.generateModels(wsdl, operations);
-          console.log(util.inspect(generatedModels, {depth: null}));
+          // console.log(util.inspect(generatedModels, {depth: null}));
 
             // check for API/operation signature in generated code
           var index = code.indexOf('USZipUSZipSoap12.GetInfoByAreaCode = function(GetInfoByAreaCode, callback)'); // eslint-disable-line max-len
@@ -304,12 +298,17 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           index = code.indexOf("USZipUSZipSoap12.remoteMethod('GetInfoByAreaCode',");
           assert.ok(index > -1);
 
-          var expectedModels = path.resolve(__dirname, './results/anytype_model.json');
-          expectedModels = require(expectedModels);
-            // verify generated models against expected
-          assert.equal(JSON.stringify(generatedModels), JSON.stringify(expectedModels));
+          var expectedModels = readModelJsonSync('anytype_model.json');
+          expect(generatedModels).to.deep.equal(expectedModels);
 
           done();
         });
   });
 });
+
+
+function readModelJsonSync(name) {
+    var modelJson = path.resolve(__dirname, 'results',  name);
+    expect(fs.existsSync(modelJson), 'file exists');
+    return JSON.parse(fs.readFileSync(modelJson));
+}
