@@ -1,1 +1,10 @@
 node_modules
+npm-debug.log
+coverage
+lib
+.idea
+*.iml
+.vscode
+.eslintrc
+.DS_Store
+

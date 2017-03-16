@@ -1,0 +1,33 @@
+{
+  "GetQuote": {
+    "name": "GetQuote",
+    "properties": {
+      "symbol": {
+        "type": "string"
+      },
+      "globals": {
+        "type": "Globals"
+      }
+    }
+  },
+  "Globals": {
+    "name": "Globals",
+    "properties": {
+      "EventEmitter": {
+        "type": "boolean"
+      },
+      "Promise": {
+        "type": "boolean"
+      }
+    }
+  },
+  "GetQuoteResponse": {
+    "name": "GetQuoteResponse",
+    "properties": {
+      "GetQuoteResult": {
+        "type": "string"
+      }
+    }
+  }
+}
+

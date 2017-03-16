@@ -1,0 +1,35 @@
+{
+  "GetAtomicWeight": {
+    "name": "GetAtomicWeight",
+    "properties": {
+      "ElementName": {
+        "type": "string"
+      }
+    }
+  },
+  "GetAtomicWeightResponse": {
+    "name": "GetAtomicWeightResponse",
+    "properties": {
+      "GetAtomicWeightResult": {
+        "type": "string"
+      }
+    }
+  },
+  "GetAtomicNumber": {
+    "name": "GetAtomicNumber",
+    "properties": {
+      "ElementName": {
+        "type": "string"
+      }
+    }
+  },
+  "GetAtomicNumberResponse": {
+    "name": "GetAtomicNumberResponse",
+    "properties": {
+      "GetAtomicNumberResult": {
+        "type": "string"
+      }
+    }
+  }
+}
+

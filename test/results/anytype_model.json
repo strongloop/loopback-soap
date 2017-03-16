@@ -1,0 +1,23 @@
+{
+  "GetInfoByAreaCode": {
+    "name": "GetInfoByAreaCode",
+    "properties": {
+      "USAreaCode": {
+        "type": "string"
+      }
+    }
+  },
+  "GetInfoByAreaCodeResponse": {
+    "name": "GetInfoByAreaCodeResponse",
+    "properties": {
+      "GetInfoByAreaCodeResult": {
+        "type": "GetInfoByAreaCodeResult"
+      }
+    }
+  },
+  "GetInfoByAreaCodeResult": {
+    "name": "GetInfoByAreaCodeResult",
+    "properties": {
+    }
+  }
+}
