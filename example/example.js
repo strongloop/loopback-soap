@@ -10,7 +10,6 @@ var helper = require('../index');
 var soap = require('strong-soap').soap;
 var WSDL = soap.WSDL;
 
-
 var options = {};
 var operations = [];
 var loadedWsdl;
