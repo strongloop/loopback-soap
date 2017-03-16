@@ -35,13 +35,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "async": "^2.1.5",
-    "curl": "^0.1.4",
-    "debug": "^2.2.0",
     "ejs": "^2.5.5",
     "lodash": "^4.17.4",
-    "spawn-sync": "1.0.15",
-    "strong-globalize": "^2.6.0",
     "strong-soap": "^1.0.1",
     "underscore.string": "^3.3.4"
   }

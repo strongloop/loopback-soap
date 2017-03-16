@@ -9,7 +9,7 @@ var util = require('util');
 var helper = require('../index');
 var soap = require('strong-soap').soap;
 var WSDL = soap.WSDL;
-var curl = require('curl');
+
 
 var options = {};
 var operations = [];
