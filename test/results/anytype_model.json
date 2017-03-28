@@ -19,5 +19,65 @@
     "name": "GetInfoByAreaCodeResult",
     "properties": {
     }
+  },
+  "GetInfoByCity": {
+    "name": "GetInfoByCity",
+    "properties": {
+      "USCity": {
+        "type": "string"
+      }
+    }
+  },
+  "GetInfoByCityResponse": {
+    "name": "GetInfoByCityResponse",
+    "properties": {
+      "GetInfoByCityResult": {
+        "type": "GetInfoByCityResult"
+      }
+    }
+  },
+  "GetInfoByCityResult": {
+    "name": "GetInfoByCityResult",
+    "properties": {}
+  },
+  "GetInfoByState": {
+    "name": "GetInfoByState",
+    "properties": {
+      "USState": {
+        "type": "string"
+      }
+    }
+  },
+  "GetInfoByStateResponse": {
+    "name": "GetInfoByStateResponse",
+    "properties": {
+      "GetInfoByStateResult": {
+        "type": "GetInfoByStateResult"
+      }
+    }
+  },
+  "GetInfoByStateResult": {
+    "name": "GetInfoByStateResult",
+    "properties": {}
+  },
+  "GetInfoByZIP": {
+    "name": "GetInfoByZIP",
+    "properties": {
+      "USZip": {
+        "type": "string"
+      }
+    }
+  },
+  "GetInfoByZIPResponse": {
+    "name": "GetInfoByZIPResponse",
+    "properties": {
+      "GetInfoByZIPResult": {
+        "type": "GetInfoByZIPResult"
+      }
+    }
+  },
+  "GetInfoByZIPResult": {
+    "name": "GetInfoByZIPResult",
+    "properties": {}
   }
 }

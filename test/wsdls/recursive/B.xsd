@@ -27,6 +27,10 @@
             </xs:element>
             <xs:element name="Address" type="xs:string" minOccurs="0"
                         maxOccurs="1"/>
+            <xs:element name="Zip" type="xs:int" minOccurs="0"
+                        maxOccurs="1"/>
+            <xs:element name="Latitude" type="xs:float" minOccurs="0"
+                        maxOccurs="1"/>
             <xs:element name="Email" type="xs:string" minOccurs="0"
                         maxOccurs="1"/>
             <xs:element name="Telephone" type="xs:string" minOccurs="0"
