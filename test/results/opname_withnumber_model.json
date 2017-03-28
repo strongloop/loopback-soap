@@ -1,0 +1,18 @@
+{
+  "GetICD9Level2": {
+    "name": "GetICD9Level2",
+    "properties": {
+      "ICD9Level1ID": {
+        "type": "number"
+      }
+    }
+  },
+  "GetICD9Level2Response": {
+    "name": "GetICD9Level2Response",
+    "properties": {
+      "GetICD9Level2Result": {
+        "type": "string"
+      }
+    }
+  }
+}

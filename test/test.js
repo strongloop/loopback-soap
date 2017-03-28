@@ -98,7 +98,7 @@ describe('Generate APIs and models with WSDLs containing ', function() {
   });
 
     // skipping this until a fix made in strong-soap gets into master and published to npm
-  it.skip('RPC/Literal', function(done) {
+  it('RPC/Literal', function(done) {
     var options = {};
     var operations = [];
     var loadedWsdl;
@@ -256,6 +256,12 @@ describe('Generate APIs and models with WSDLs containing ', function() {
         function(err, wsdl) {
           var operation = wsdl.definitions.bindings.USZipSoap12.operations.GetInfoByAreaCode; // eslint-disable-line max-len
           operations.push(operation);
+          operation = wsdl.definitions.bindings.USZipSoap12.operations.GetInfoByCity; // eslint-disable-line max-len
+          operations.push(operation);
+          operation = wsdl.definitions.bindings.USZipSoap12.operations.GetInfoByState; // eslint-disable-line max-len
+          operations.push(operation);
+          operation = wsdl.definitions.bindings.USZipSoap12.operations.GetInfoByZIP; // eslint-disable-line max-len
+          operations.push(operation);
           loadedWsdl = wsdl;
           var apiData = {
             'wsdl': wsdl,
@@ -266,20 +272,62 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           };
 
           var code = helper.generateRemoteMethods(apiData);
-          console.log(code);
 
           // TODO [rashmi] Revisit. Currently strong-soap returns xs:any type as 0 element which results in empty properties {} list in the model.
           var generatedModels = helper.generateModels(wsdl, operations);
-          console.log(util.inspect(generatedModels, {depth: null}));
 
             // check for API/operation signature in generated code
           var index = code.indexOf('USZipUSZipSoap12.GetInfoByAreaCode = function(GetInfoByAreaCode, callback)'); // eslint-disable-line max-len
           assert.ok(index > -1);
             // check for beginning of REST API in generated code
-          index = code.indexOf("USZipUSZipSoap12.remoteMethod('GetInfoByAreaCode',");
+          index = code.indexOf('USZipUSZipSoap12.GetInfoByState = function(GetInfoByState, callback)'); // eslint-disable-line max-len
+          assert.ok(index > -1);
+
+          // check for beginning of REST API in generated code
+          index = code.indexOf("USZipUSZipSoap12.remoteMethod('GetInfoByState',");
+          assert.ok(index > -1);
+
+          // check for beginning of REST API in generated code
+          index = code.indexOf("type: 'GetInfoByState'");
           assert.ok(index > -1);
 
           var expectedModels = readModelJsonSync('anytype_model.json');
+          expect(generatedModels).to.deep.equal(expectedModels);
+
+          done();
+        });
+  });
+
+  it('Operation Name has a number and property has numeric type', function(done) {
+    var options = {};
+    var operations = [];
+    var loadedWsdl;
+    var url = 'http://www.webservicex.net/icd9.asmx?WSDL';
+
+    WSDL.open(url, options,
+        function(err, wsdl) {
+          var operation = wsdl.definitions.bindings.ICD9Soap.operations.GetICD9Level2; // eslint-disable-line max-len
+          operations.push(operation);
+          loadedWsdl = wsdl;
+          var apiData = {
+            'wsdl': wsdl,
+            'wsdlUrl': url,
+            'service': 'ICD9',
+            'binding': 'ICD9Soap',
+            'operations': operations,
+          };
+
+          var code = helper.generateRemoteMethods(apiData);
+          var generatedModels = helper.generateModels(wsdl, operations);
+
+          // check for API/operation signature in generated code
+          var index = code.indexOf('ICD9ICD9Soap.GetICD9Level2 = function(GetICD9Level2, callback)'); // eslint-disable-line max-len
+          assert.ok(index > -1);
+          // check for beginning of REST API in generated code
+          index = code.indexOf("ICD9ICD9Soap.remoteMethod('GetICD9Level2',");
+          assert.ok(index > -1);
+
+          var expectedModels = readModelJsonSync('opname_withnumber_model.json');
           expect(generatedModels).to.deep.equal(expectedModels);
 
           done();
@@ -289,6 +337,5 @@ describe('Generate APIs and models with WSDLs containing ', function() {
 
 function readModelJsonSync(name) {
   var modelJson = path.resolve(__dirname, 'results',  name);
-  expect(fs.existsSync(modelJson), 'file exists');
   return JSON.parse(fs.readFileSync(modelJson));
 }

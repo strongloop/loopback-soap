@@ -30,6 +30,12 @@
       "Address": {
         "type": "string"
       },
+      "Zip": {
+        "type": "number"
+      },
+      "Latitude": {
+        "type": "number"
+      },
       "Email": {
         "type": "string"
       },
