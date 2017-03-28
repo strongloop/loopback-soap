@@ -256,11 +256,11 @@ describe('Generate APIs and models with WSDLs containing ', function() {
         function(err, wsdl) {
           var operation = wsdl.definitions.bindings.USZipSoap12.operations.GetInfoByAreaCode; // eslint-disable-line max-len
           operations.push(operation);
-          var operation = wsdl.definitions.bindings.USZipSoap12.operations.GetInfoByCity; // eslint-disable-line max-len
+          operation = wsdl.definitions.bindings.USZipSoap12.operations.GetInfoByCity; // eslint-disable-line max-len
           operations.push(operation);
-          var operation = wsdl.definitions.bindings.USZipSoap12.operations.GetInfoByState; // eslint-disable-line max-len
+          operation = wsdl.definitions.bindings.USZipSoap12.operations.GetInfoByState; // eslint-disable-line max-len
           operations.push(operation);
-          var operation = wsdl.definitions.bindings.USZipSoap12.operations.GetInfoByZIP; // eslint-disable-line max-len
+          operation = wsdl.definitions.bindings.USZipSoap12.operations.GetInfoByZIP; // eslint-disable-line max-len
           operations.push(operation);
           loadedWsdl = wsdl;
           var apiData = {
@@ -280,7 +280,7 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           var index = code.indexOf('USZipUSZipSoap12.GetInfoByAreaCode = function(GetInfoByAreaCode, callback)'); // eslint-disable-line max-len
           assert.ok(index > -1);
             // check for beginning of REST API in generated code
-          index = code.indexOf("USZipUSZipSoap12.GetInfoByState = function(GetInfoByState, callback)");
+          index = code.indexOf('USZipUSZipSoap12.GetInfoByState = function(GetInfoByState, callback)'); // eslint-disable-line max-len
           assert.ok(index > -1);
 
           // check for beginning of REST API in generated code
@@ -298,45 +298,44 @@ describe('Generate APIs and models with WSDLs containing ', function() {
         });
   });
 
-  it("Operation Name has a number and property has numeric type", function(done) {
-        var options = {};
-        var operations = [];
-        var loadedWsdl;
-        var url = 'http://www.webservicex.net/icd9.asmx?WSDL';
+  it('Operation Name has a number and property has numeric type', function(done) {
+    var options = {};
+    var operations = [];
+    var loadedWsdl;
+    var url = 'http://www.webservicex.net/icd9.asmx?WSDL';
 
-        WSDL.open(url, options,
-            function(err, wsdl) {
-                var operation = wsdl.definitions.bindings.ICD9Soap.operations.GetICD9Level2; // eslint-disable-line max-len
-                operations.push(operation);
-                loadedWsdl = wsdl;
-                var apiData = {
-                    'wsdl': wsdl,
-                    'wsdlUrl': url,
-                    'service': 'ICD9',
-                    'binding': 'ICD9Soap',
-                    'operations': operations,
-                };
+    WSDL.open(url, options,
+        function(err, wsdl) {
+          var operation = wsdl.definitions.bindings.ICD9Soap.operations.GetICD9Level2; // eslint-disable-line max-len
+          operations.push(operation);
+          loadedWsdl = wsdl;
+          var apiData = {
+            'wsdl': wsdl,
+            'wsdlUrl': url,
+            'service': 'ICD9',
+            'binding': 'ICD9Soap',
+            'operations': operations,
+          };
 
-                var code = helper.generateRemoteMethods(apiData);
-                var generatedModels = helper.generateModels(wsdl, operations);
+          var code = helper.generateRemoteMethods(apiData);
+          var generatedModels = helper.generateModels(wsdl, operations);
 
-                // check for API/operation signature in generated code
-                var index = code.indexOf('ICD9ICD9Soap.GetICD9Level2 = function(GetICD9Level2, callback)'); // eslint-disable-line max-len
-                assert.ok(index > -1);
-                // check for beginning of REST API in generated code
-                index = code.indexOf("ICD9ICD9Soap.remoteMethod('GetICD9Level2'");
-                assert.ok(index > -1);
+          // check for API/operation signature in generated code
+          var index = code.indexOf('ICD9ICD9Soap.GetICD9Level2 = function(GetICD9Level2, callback)'); // eslint-disable-line max-len
+          assert.ok(index > -1);
+          // check for beginning of REST API in generated code
+          index = code.indexOf("ICD9ICD9Soap.remoteMethod('GetICD9Level2',");
+          assert.ok(index > -1);
 
-                var expectedModels = readModelJsonSync('opname_withnumber_model.json');
-                expect(generatedModels).to.deep.equal(expectedModels);
+          var expectedModels = readModelJsonSync('opname_withnumber_model.json');
+          expect(generatedModels).to.deep.equal(expectedModels);
 
-                done();
-            });
-    });
-
+          done();
+        });
+  });
 });
 
 function readModelJsonSync(name) {
-    var modelJson = path.resolve(__dirname, 'results',  name);
-    return JSON.parse(fs.readFileSync(modelJson));
+  var modelJson = path.resolve(__dirname, 'results',  name);
+  return JSON.parse(fs.readFileSync(modelJson));
 }
