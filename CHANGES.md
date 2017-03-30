@@ -1,3 +1,11 @@
+2017-03-30, Version 1.0.2
+=========================
+
+ * Fix eslint issues (rashmihunt)
+
+ * Enable RPC/Literal tests, add new tests (rashmihunt)
+
+
 2017-03-17, Version 1.0.1
 =========================
 
