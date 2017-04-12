@@ -26,6 +26,8 @@ WSDL.open(url, options,
       operations.push(getAtomicNumber);
       loadedWsdl = wsdl;
       var apiData = {
+        // assumes SOAP WebService datasource with name 'soapDS' exists
+        'datasource': 'soapDS',
         'wsdl': wsdl,
         'wsdlUrl': url,
         'service': 'periodictable',
