@@ -28,6 +28,8 @@ describe('Generate APIs and models with WSDLs containing ', function() {
         operations.push(getQuote);
         loadedWsdl = wsdl;
         var apiData = {
+          // assumes SOAP WebService datasource with name 'soapDS' exists
+          'datasource': 'soapDS',
           'wsdl': wsdl,
           'wsdlUrl': url,
           'service': 'StockQuoteService',
@@ -69,6 +71,8 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           operations.push(getAtomicNumber);
           loadedWsdl = wsdl;
           var apiData = {
+            // assumes SOAP WebService datasource with name 'soapDS' exists
+            'datasource': 'soapDS',
             'wsdl': wsdl,
             'wsdlUrl': url,
             'service': 'periodictable',
@@ -111,6 +115,8 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           operations.push(myMethod);
           loadedWsdl = wsdl;
           var apiData = {
+            // assumes SOAP WebService datasource with name 'soapDS' exists
+            'datasource': 'soapDS',
             'wsdl': wsdl,
             'wsdlUrl': url,
             'service': 'RPCLiteralService',
@@ -149,6 +155,8 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           operations.push(myMethod);
           loadedWsdl = wsdl;
           var apiData = {
+            // assumes SOAP WebService datasource with name 'soapDS' exists
+            'datasource': 'soapDS',
             'wsdl': wsdl,
             'wsdlUrl': url,
             'service': 'foo',
@@ -186,6 +194,8 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           operations.push(operation);
           loadedWsdl = wsdl;
           var apiData = {
+            // assumes SOAP WebService datasource with name 'soapDS' exists
+            'datasource': 'soapDS',
             'wsdl': wsdl,
             'wsdlUrl': url,
             'service': 'DummyService',
@@ -222,6 +232,8 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           operations.push(operation);
           loadedWsdl = wsdl;
           var apiData = {
+            // assumes SOAP WebService datasource with name 'soapDS' exists
+            'datasource': 'soapDS',
             'wsdl': wsdl,
             'wsdlUrl': url,
             'service': 'OneWayService',
@@ -264,6 +276,8 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           operations.push(operation);
           loadedWsdl = wsdl;
           var apiData = {
+            // assumes SOAP WebService datasource with name 'soapDS' exists
+            'datasource': 'soapDS',
             'wsdl': wsdl,
             'wsdlUrl': url,
             'service': 'USZip',
@@ -310,6 +324,8 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           operations.push(operation);
           loadedWsdl = wsdl;
           var apiData = {
+            // assumes SOAP WebService datasource with name 'soapDS' exists
+            'datasource': 'soapDS',
             'wsdl': wsdl,
             'wsdlUrl': url,
             'service': 'ICD9',
@@ -330,6 +346,39 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           var expectedModels = readModelJsonSync('opname_withnumber_model.json');
           expect(generatedModels).to.deep.equal(expectedModels);
 
+          done();
+        });
+  });
+  it('DataSource checks', function(done) {
+    var options = {};
+    var operations = [];
+    var loadedWsdl;
+    var url = 'http://www.webservicex.net/icd9.asmx?WSDL';
+
+    WSDL.open(url, options,
+        function(err, wsdl) {
+          var operation = wsdl.definitions.bindings.ICD9Soap.operations.GetICD9Level2; // eslint-disable-line max-len
+          operations.push(operation);
+          loadedWsdl = wsdl;
+          var apiData = {
+            // assumes SOAP WebService datasource with name 'soapDS' exists
+            'datasource': 'soapDS',
+            'wsdl': wsdl,
+            'wsdlUrl': url,
+            'service': 'ICD9',
+            'binding': 'ICD9Soap',
+            'operations': operations,
+          };
+
+          var code = helper.generateRemoteMethods(apiData);
+
+          // check datasource related code from soap connector
+          var index = code.indexOf('var soapDataSource = server.datasources.soapDS;'); // eslint-disable-line max-len
+          assert.ok(index > -1);
+          index = code.indexOf("soapDataSource.once('connected', function ()");
+          assert.ok(index > -1);
+          index = code.indexOf('ICD9ICD9Soap.GetICD9Level2(GetICD9Level2, function (err, response)'); // eslint-disable-line max-len
+          assert.ok(index > -1);
           done();
         });
   });
