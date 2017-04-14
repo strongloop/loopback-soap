@@ -1,3 +1,13 @@
+2017-04-14, Version 1.0.3
+=========================
+
+ * Update README (rashmihunt)
+
+ * adding .travis.yml file (rashmihunt)
+
+ * Integrate datsource with lb soap feature (rashmihunt)
+
+
 2017-03-30, Version 1.0.2
 =========================
 
