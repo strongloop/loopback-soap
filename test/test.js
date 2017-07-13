@@ -101,7 +101,6 @@ describe('Generate APIs and models with WSDLs containing ', function() {
         });
   });
 
-    // skipping this until a fix made in strong-soap gets into master and published to npm
   it('RPC/Literal', function(done) {
     var options = {};
     var operations = [];
@@ -379,6 +378,39 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           assert.ok(index > -1);
           index = code.indexOf('ICD9ICD9Soap.GetICD9Level2(GetICD9Level2, function (err, response)'); // eslint-disable-line max-len
           assert.ok(index > -1);
+          done();
+        });
+  });
+
+  it('Special character in binding or service name', function(done) {
+    var options = {};
+    var operations = [];
+    var loadedWsdl;
+    var url = './wsdls/special_char_test.wsdl';
+
+    WSDL.open(path.resolve(__dirname, url), options,
+        function(err, wsdl) {
+          var bindings = wsdl.definitions.bindings;
+          var myMethod =
+                bindings["-a.b/c`d~e!f@g#h%i^j*k(l)m-n+o=p'q+r;s<t>u,v?w/x"].operations.myMethod;
+          operations.push(myMethod);
+          loadedWsdl = wsdl;
+          var apiData = {
+            // assumes SOAP WebService datasource with name 'soapDS' exists
+            'datasource': 'soapDS',
+            'wsdl': wsdl,
+            'wsdlUrl': url,
+            'service': 'RPCLiteralService',
+            'binding': "-a.b/c`d~e!f@g#h%i^j*k(l)m-n+o=p'q+r;s<t>u,v?w/x",
+            'operations': operations,
+          };
+
+          var code = helper.generateRemoteMethods(apiData);
+
+          // check variable name for the model is created correctly by substituting any special characters not acceptable in javascript variable with _
+          var index = code.indexOf('var RPCLiteralService_a_b_c_d_e_f_g_h_i_j_k_l_m_n_o_p_q_r_s_t_u_v_w_x;'); // eslint-disable-line max-len
+          assert.ok(index > -1);
+
           done();
         });
   });
