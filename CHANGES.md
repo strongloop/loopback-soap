@@ -1,3 +1,9 @@
+2017-07-14, Version 1.0.4
+=========================
+
+ * special char in service/binding (rashmihunt)
+
+
 2017-04-14, Version 1.0.3
 =========================
 
