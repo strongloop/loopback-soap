@@ -58,9 +58,9 @@ describe('Generate APIs and models with WSDLs containing ', function() {
     var options = {};
     var operations = [];
     var loadedWsdl;
-    var url = 'http://www.webservicex.net/periodictable.asmx?WSDL';
+    var url = './wsdls/periodictable.wsdl';
 
-    WSDL.open(url, options,
+    WSDL.open(path.resolve(__dirname, url), options,
         function(err, wsdl) {
           var getAtomicWeight =
               wsdl.definitions.bindings.periodictableSoap.operations.GetAtomicWeight;
@@ -261,9 +261,9 @@ describe('Generate APIs and models with WSDLs containing ', function() {
     var options = {};
     var operations = [];
     var loadedWsdl;
-    var url = 'http://www.webservicex.net/uszip.asmx?WSDL';
+    var url = './wsdls/uszip.wsdl';
 
-    WSDL.open(url, options,
+    WSDL.open(path.resolve(__dirname, url), options,
         function(err, wsdl) {
           var operation = wsdl.definitions.bindings.USZipSoap12.operations.GetInfoByAreaCode; // eslint-disable-line max-len
           operations.push(operation);
