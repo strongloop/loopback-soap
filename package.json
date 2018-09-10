@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "Integration between LoopBack and SOAP API specs",
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "main": "index.js",
   "scripts": {
