@@ -1,18 +1,77 @@
 {
-  "GetICD9Level2": {
-    "name": "GetICD9Level2",
+  "CheckAddressW2lines": {
+    "name": "CheckAddressW2lines",
     "properties": {
-      "ICD9Level1ID": {
-        "type": "number"
-      }
+      "AddressLine": { "type": "string" },
+      "AddressLine2": { "type": "string" },
+      "ZipCode": { "type": "string" },
+      "City": { "type": "string" },
+      "StateAbbrev": { "type": "string" },
+      "LicenseKey": { "type": "string" }
     }
   },
-  "GetICD9Level2Response": {
-    "name": "GetICD9Level2Response",
+  "CheckAddressW2linesResponse": {
+    "name": "CheckAddressW2linesResponse",
+    "properties": { "CheckAddressW2linesResult": { "type": "Address" } }
+  },
+  "Address": {
+    "name": "Address",
     "properties": {
-      "GetICD9Level2Result": {
-        "type": "string"
-      }
+      "ServiceError": { "type": "boolean" },
+      "AddressError": { "type": "boolean" },
+      "AddressFoundBeMoreSpecific": { "type": "boolean" },
+      "CheckDigit": { "type": "number" },
+      "NeededCorrection": { "type": "boolean" },
+      "FromLongitude": { "type": "number" },
+      "FromLatitude": { "type": "number" },
+      "ToLongitude": { "type": "number" },
+      "ToLatitude": { "type": "number" },
+      "AvgLongitude": { "type": "number" },
+      "AvgLatitude": { "type": "number" },
+      "hasDaylightSavings": { "type": "boolean" },
+      "LLCertainty": { "type": "number" },
+      "CountyNum": { "type": "number" },
+      "Firm": { "type": "string" },
+      "DeliveryAddress": { "type": "string" },
+      "DeliveryAddress2": { "type": "string" },
+      "PrimaryLow": { "type": "string" },
+      "PrimaryHigh": { "type": "string" },
+      "PriEO": { "type": "string" },
+      "SecEO": { "type": "string" },
+      "SecondaryLow": { "type": "string" },
+      "SecondaryHigh": { "type": "string" },
+      "Secondary": { "type": "string" },
+      "Extra": { "type": "string" },
+      "City": { "type": "string" },
+      "StateAbbrev": { "type": "string" },
+      "ZipCode": { "type": "string" },
+      "CarrierRoute": { "type": "string" },
+      "County": { "type": "string" },
+      "DeliveryPoint": { "type": "string" },
+      "BarCode": { "type": "string" },
+      "CSKey": { "type": "string" },
+      "UpdateKey": { "type": "string" },
+      "RecordTypeCode": { "type": "string" },
+      "CongressDistrictNumber": { "type": "string" },
+      "FIPS": { "type": "string" },
+      "FinanceNumber": { "type": "string" },
+      "CMSA": { "type": "string" },
+      "PMSA": { "type": "string" },
+      "MSA": { "type": "string" },
+      "MA": { "type": "string" },
+      "TimeZone": { "type": "string" },
+      "AreaCode": { "type": "string" },
+      "PreferredCityName": { "type": "string" },
+      "CensusBlockNum": { "type": "string" },
+      "CensusTractNum": { "type": "string" },
+      "Primary": { "type": "string" },
+      "PrefixDirection": { "type": "string" },
+      "StreetName": { "type": "string" },
+      "Suffix": { "type": "string" },
+      "PostDirection": { "type": "string" },
+      "SecondaryNumber": { "type": "string" },
+      "StateLegislativeUpper": { "type": "string" },
+      "StateLegislativeLower": { "type": "string" }
     }
   }
 }

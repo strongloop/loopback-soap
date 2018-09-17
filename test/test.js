@@ -315,11 +315,11 @@ describe('Generate APIs and models with WSDLs containing ', function() {
     var options = {};
     var operations = [];
     var loadedWsdl;
-    var url = 'http://www.webservicex.net/icd9.asmx?WSDL';
+    var url = 'http://ws.cdyne.com/psaddress/addresslookup.asmx?wsdl';
 
     WSDL.open(url, options,
         function(err, wsdl) {
-          var operation = wsdl.definitions.bindings.ICD9Soap.operations.GetICD9Level2; // eslint-disable-line max-len
+          var operation = wsdl.definitions.bindings.AddressLookupSoap.operations.CheckAddressW2lines; // eslint-disable-line max-len
           operations.push(operation);
           loadedWsdl = wsdl;
           var apiData = {
@@ -327,8 +327,8 @@ describe('Generate APIs and models with WSDLs containing ', function() {
             'datasource': 'soapDS',
             'wsdl': wsdl,
             'wsdlUrl': url,
-            'service': 'ICD9',
-            'binding': 'ICD9Soap',
+            'service': 'AddressLookup',
+            'binding': 'AddressLookupSoap',
             'operations': operations,
           };
 
@@ -336,12 +336,11 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           var generatedModels = helper.generateModels(wsdl, operations);
 
           // check for API/operation signature in generated code
-          var index = code.indexOf('ICD9ICD9Soap.GetICD9Level2 = function(GetICD9Level2, callback)'); // eslint-disable-line max-len
+          var index = code.indexOf('AddressLookupSoap.CheckAddressW2lines = function(CheckAddressW2lines, callback)'); // eslint-disable-line max-len
           assert.ok(index > -1);
           // check for beginning of REST API in generated code
-          index = code.indexOf("ICD9ICD9Soap.remoteMethod('GetICD9Level2',");
+          index = code.indexOf("AddressLookupSoap.remoteMethod('CheckAddressW2lines',");
           assert.ok(index > -1);
-
           var expectedModels = readModelJsonSync('opname_withnumber_model.json');
           expect(generatedModels).to.deep.equal(expectedModels);
 
@@ -352,11 +351,11 @@ describe('Generate APIs and models with WSDLs containing ', function() {
     var options = {};
     var operations = [];
     var loadedWsdl;
-    var url = 'http://www.webservicex.net/icd9.asmx?WSDL';
+    var url = 'http://ws.cdyne.com/psaddress/addresslookup.asmx?wsdl';
 
     WSDL.open(url, options,
         function(err, wsdl) {
-          var operation = wsdl.definitions.bindings.ICD9Soap.operations.GetICD9Level2; // eslint-disable-line max-len
+          var operation = wsdl.definitions.bindings.AddressLookupSoap.operations.CheckAddressW2lines; // eslint-disable-line max-len
           operations.push(operation);
           loadedWsdl = wsdl;
           var apiData = {
@@ -364,8 +363,8 @@ describe('Generate APIs and models with WSDLs containing ', function() {
             'datasource': 'soapDS',
             'wsdl': wsdl,
             'wsdlUrl': url,
-            'service': 'ICD9',
-            'binding': 'ICD9Soap',
+            'service': 'AddressLookup',
+            'binding': 'AddressLookupSoap',
             'operations': operations,
           };
 
@@ -376,7 +375,7 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           assert.ok(index > -1);
           index = code.indexOf("soapDataSource.once('connected', function ()");
           assert.ok(index > -1);
-          index = code.indexOf('ICD9ICD9Soap.GetICD9Level2(GetICD9Level2, function (err, response)'); // eslint-disable-line max-len
+          index = code.indexOf('AddressLookupSoap.CheckAddressW2lines(CheckAddressW2lines, function (err, response)'); // eslint-disable-line max-len
           assert.ok(index > -1);
           done();
         });
