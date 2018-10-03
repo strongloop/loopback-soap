@@ -1,0 +1,34 @@
+{
+  "setLastTradePrice": {
+    "name": "setLastTradePrice",
+    "properties": {
+      "tradePrice": {
+        "type": "tradePrice"
+      }
+    }
+  },
+  "tradePrice": {
+    "name": "tradePrice",
+    "properties": {
+      "tradePrice": {
+        "type": "number"
+      }
+    }
+  },
+  "setLastTradePriceResponse": {
+    "name": "setLastTradePriceResponse",
+    "properties": {
+      "result": {
+        "type": "result"
+      }
+    }
+  },
+  "result": {
+    "name": "result",
+    "properties": {
+      "result": {
+        "type": "boolean"
+      }
+    }
+  }
+}
