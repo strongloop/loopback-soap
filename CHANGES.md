@@ -1,3 +1,23 @@
+2018-10-24, Version 1.1.0
+=========================
+
+ * Check RPC lit wsdls for complex types (Jon Roberts)
+
+ * Lint fixes (Micah Rairdon)
+
+ * Fix for more complex wsdl scenarios (Micah Rairdon)
+
+ * fix test cases (#16) (Diana Lau)
+
+ * Use saved wsdl files instead of from url (#15) (Diana Lau)
+
+ * Avoid reiterate already parsed models (Денис Черносов)
+
+ * Create Issue and PR Templates (#9) (Sakib Hasan)
+
+ * Add CODEOWNER file (Diana Lau)
+
+
 2017-07-14, Version 1.0.4
 =========================
 
