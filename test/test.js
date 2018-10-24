@@ -413,6 +413,26 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           done();
         });
   });
+
+  it('RPC/Literal WSDL using complex types', function(done) {
+    var options = {};
+    var operations = [];
+    var url = './wsdls/stockquoterpc.wsdl';
+
+    WSDL.open(path.resolve(__dirname, url), options,
+        function(err, wsdl) {
+          var operation =
+          wsdl.definitions.bindings.StockQuoteSoapBindingRPC.operations.setLastTradePrice;
+          operations.push(operation);
+
+          var generatedModels = helper.generateModels(wsdl, operations);
+
+          var expectedModels = path.resolve(__dirname, './results/stockquoterpc_model.json');
+          expectedModels = require(expectedModels);
+          expect(generatedModels).to.deep.equal(expectedModels);
+          done();
+        });
+  });
 });
 
 function readModelJsonSync(name) {
