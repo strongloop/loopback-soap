@@ -433,6 +433,26 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           done();
         });
   });
+
+  it('Test GetCase WSDL to avoid regressions', function(done) {
+    var options = {};
+    var operations = [];
+    var url = './wsdls/GetCase.wsdl';
+
+    WSDL.open(path.resolve(__dirname, url), options,
+        function(err, wsdl) {
+          var operation =
+          wsdl.definitions.bindings.soap.operations.GetCase;
+          operations.push(operation);
+
+          var generatedModels = helper.generateModels(wsdl, operations);
+
+          var expectedModels = path.resolve(__dirname, './results/getcase_model.json');
+          expectedModels = require(expectedModels);
+          expect(generatedModels).to.deep.equal(expectedModels);
+          done();
+        });
+  });
 });
 
 function readModelJsonSync(name) {
