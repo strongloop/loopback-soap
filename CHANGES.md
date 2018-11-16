@@ -1,3 +1,11 @@
+2018-11-16, Version 1.1.1
+=========================
+
+ * Avoid regression by reverting code (Jon Roberts)
+
+ * Add test case showing regression (Jon Roberts)
+
+
 2018-10-24, Version 1.1.0
 =========================
 
