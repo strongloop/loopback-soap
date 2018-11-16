@@ -1,0 +1,50 @@
+{
+  "GetCaseRequest": {
+    "name": "GetCaseRequest",
+    "properties": {
+      "CallBackUrl": {
+        "type": "string"
+      },
+      "DeliverAsFile": {
+        "type": "boolean"
+      },
+      "DistributorNumber": {
+        "type": "string"
+      },
+      "Token": {
+        "type": "string"
+      }
+    }
+  },
+  "GetCaseResponse": {
+    "name": "GetCaseResponse",
+    "properties": {
+      "BatchCount": {
+        "type": "number"
+      },
+      "BatchSize": {
+        "type": "number"
+      },
+      "Message": {
+        "type": "Message"
+      },
+      "Success": {
+        "type": "boolean"
+      }
+    }
+  },
+  "Message": {
+    "name": "Message",
+    "properties": {
+      "Code": {
+        "type": "number"
+      },
+      "Text": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string"
+      }
+    }
+  }
+}
