@@ -1,3 +1,11 @@
+2019-04-29, Version 1.2.0
+=========================
+
+ * Upgrade dependencies (Raymond Feng)
+
+ * fix: update lodash (jannyHou)
+
+
 2018-11-16, Version 1.1.1
 =========================
 
