@@ -30,14 +30,14 @@
     "chai": "^3.2.0",
     "eslint": "^3.12.2",
     "eslint-config-loopback": "^8.0.0",
-    "loopback": "^3.0.0",
+    "loopback": "^3.25.1",
     "mocha": "^5.2.0"
   },
   "license": "MIT",
   "dependencies": {
     "ejs": "^2.5.5",
     "lodash": "^4.17.11",
-    "strong-soap": "^1.0.1",
+    "strong-soap": "^1.19.0",
     "underscore.string": "^3.3.4"
   }
 }
