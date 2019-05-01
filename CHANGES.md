@@ -1,3 +1,9 @@
+2019-05-01, Version 1.2.2
+=========================
+
+ * Use a var name to avoid conflict with class name (Raymond Feng)
+
+
 2019-05-01, Version 1.2.1
 =========================
 
