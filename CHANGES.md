@@ -1,3 +1,9 @@
+2019-05-01, Version 1.2.3
+=========================
+
+ * Fix arg names for method delegation (Raymond Feng)
+
+
 2019-05-01, Version 1.2.2
 =========================
 
