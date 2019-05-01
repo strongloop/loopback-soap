@@ -1,3 +1,9 @@
+2019-05-01, Version 1.2.1
+=========================
+
+ * Use restriction element for base type (Raymond Feng)
+
+
 2019-04-29, Version 1.2.0
 =========================
 
