@@ -375,7 +375,7 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           assert.ok(index > -1);
           index = code.indexOf("soapDataSource.once('connected', function ()");
           assert.ok(index > -1);
-          index = code.indexOf('AddressLookupSoap.CheckAddressW2lines(CheckAddressW2lines, function (err, response)'); // eslint-disable-line max-len
+          index = code.indexOf('_soapModel.CheckAddressW2lines(CheckAddressW2lines, function (err, response)'); // eslint-disable-line max-len
           assert.ok(index > -1);
           done();
         });
@@ -407,7 +407,7 @@ describe('Generate APIs and models with WSDLs containing ', function() {
           var code = helper.generateRemoteMethods(apiData);
 
           // check variable name for the model is created correctly by substituting any special characters not acceptable in javascript variable with _
-          var index = code.indexOf('var RPCLiteralService_a_b_c_d_e_f_g_h_i_j_k_l_m_n_o_p_q_r_s_t_u_v_w_x;'); // eslint-disable-line max-len
+          var index = code.indexOf('RPCLiteralService_a_b_c_d_e_f_g_h_i_j_k_l_m_n_o_p_q_r_s_t_u_v_w_x'); // eslint-disable-line max-len
           assert.ok(index > -1);
 
           done();
