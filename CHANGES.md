@@ -1,3 +1,9 @@
+2019-05-02, Version 1.2.4
+=========================
+
+ * Fix `nonNegativeInteger` mapping (Raymond Feng)
+
+
 2019-05-01, Version 1.2.3
 =========================
 
