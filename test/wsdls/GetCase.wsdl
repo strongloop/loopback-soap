@@ -78,7 +78,7 @@
             <xs:complexType name="item">
                 <xs:sequence>
                     <xs:element minOccurs="0" name="DistributorNumber" type="xs:long"/>
-                    <xs:element minOccurs="0" name="CustomerNumber" type="xs:long"/>
+                    <xs:element minOccurs="0" name="CustomerNumber" type="xs:nonNegativeInteger"/>
                     <xs:element minOccurs="0" name="CaseNumber" nillable="true" type="xs:string"/>
                     <xs:element minOccurs="0" name="LegacyCaseNumber" nillable="true" type="xs:string"/>
                 </xs:sequence>
