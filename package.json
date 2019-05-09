@@ -21,7 +21,7 @@
     "api",
     "soap"
   ],
-  "author": "Rashmi Hunt",
+  "author": "IBM Corp.",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/strongloop/loopback-soap/issues"
