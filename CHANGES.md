@@ -1,4 +1,16 @@
-2019-05-02, Version 1.2.4
+2020-02-13, Version 1.3.0
+=========================
+
+ * Checks to avoid loop in schema processing (Jonathan Roberts)
+
+ * chore: update dependencies (#24) (Diana Lau)
+
+ * Drop Node.js 6.x (#25) (Diana Lau)
+
+ * chore: update copyrights years (Agnes Lin)
+
+
+2019-05-01, Version 1.2.4
 =========================
 
  * Fix `nonNegativeInteger` mapping (Raymond Feng)
