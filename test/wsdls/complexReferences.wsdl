@@ -1,0 +1,111 @@
+<definitions targetNamespace="http://example.com/wsdl/myAPI" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://example.com/wsdl/myAPI">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="http://example.com/wsdl/myAPI" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+      <complexType name="APIObject">
+        <sequence>
+          <element name="MyName" type="xsd:string" nillable="true" minOccurs="0" maxOccurs="1" />
+          <element name="Owner" type="tns:Owner" minOccurs="0" maxOccurs="1" />
+        </sequence>
+      </complexType>
+      <complexType name="APIProperty">
+        <sequence>
+          <element name="Name" type="xsd:string" />
+          <element name="Value" type="xsd:string" />
+        </sequence>
+      </complexType>
+      <complexType name="Owner">
+        <sequence>
+          <element name="Name" type="xsd:string" minOccurs="0" maxOccurs="1" />
+          <element name="Address" type="xsd:string" minOccurs="0" maxOccurs="1" />
+          <element name="User" type="tns:AccountUser" minOccurs="0" maxOccurs="1" />
+        </sequence>
+      </complexType>
+      <complexType name="Result">
+        <sequence>
+          <element name="StatusCode" type="xsd:string" />
+          <element name="StatusMessage" type="xsd:string" />
+        </sequence>
+      </complexType>
+      <complexType name="RetrieveRequest">
+        <sequence>
+          <element name="ObjectType" type="xsd:string" minOccurs="1" maxOccurs="1" />
+          <element name="Properties" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+          <element name="PartnerProperties" type="tns:APIProperty" minOccurs="0" maxOccurs="unbounded" />
+          <element name="RepeatLastResult" type="xsd:boolean" minOccurs="0" maxOccurs="1" />
+        </sequence>
+      </complexType>
+      <element name="RetrieveRequestMsg">
+        <complexType>
+          <sequence>
+            <element name="RetrieveRequest" type="tns:RetrieveRequest" minOccurs="1" maxOccurs="1" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RetrieveResponseMsg">
+        <complexType>
+          <sequence>
+            <element name="OverallStatus" type="xsd:string" minOccurs="1" maxOccurs="1" />
+            <element name="RequestID" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <element name="Results" type="tns:APIObject" minOccurs="0" maxOccurs="unbounded" />
+          </sequence>
+        </complexType>
+      </element>
+      <complexType name="AccountUser">
+        <complexContent>
+          <extension base="tns:APIObject">
+            <sequence>
+              <element minOccurs="1" maxOccurs="1" name="UserID" type="xsd:string" />
+              <element minOccurs="1" maxOccurs="1" name="Name" type="xsd:string" />
+              <element minOccurs="1" maxOccurs="1" name="Email" type="xsd:string" />
+              <element minOccurs="0" maxOccurs="unbounded" name="UserPermissions" nillable="true" type="tns:UserAccess" />
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="UserAccess">
+        <complexContent>
+          <extension base="tns:APIObject">
+            <sequence>
+              <element name="Name" nillable="true" minOccurs="0" maxOccurs="1" type="xsd:string" />
+              <element name="Value" nillable="true" minOccurs="0" maxOccurs="1" type="xsd:string" />
+              <element name="Description" nillable="true" minOccurs="0" maxOccurs="1" type="xsd:string" />
+              <element minOccurs="0" maxOccurs="unbounded" name="Owner" nillable="true" type="tns:Owner" />
+              <element name="Delete" minOccurs="1" maxOccurs="1" type="xsd:int" />
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+  </types>
+  <message name="retrieveRequest">
+    <part element="tns:RetrieveRequestMsg" name="parameters" />
+  </message>
+  <message name="retrieveResponse">
+    <part element="tns:RetrieveResponseMsg" name="parameters" />
+  </message>
+  <portType name="Soap">
+    <operation name="Retrieve">
+      <documentation>Retrieve objects</documentation>
+      <input message="tns:retrieveRequest" />
+      <output message="tns:retrieveResponse" />
+    </operation>
+  </portType>
+  <binding name="SoapBinding" type="tns:Soap">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Retrieve">
+      <soap:operation soapAction="Retrieve" />
+      <input>
+        <soap:body parts="parameters" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="MyAPI">
+    <documentation>My API</documentation>
+    <port binding="tns:SoapBinding" name="Soap">
+      <soap:address location="https://example.com/Service.asmx" />
+    </port>
+  </service>
+</definitions>

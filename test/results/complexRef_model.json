@@ -1,0 +1,122 @@
+{
+  "APIObject": {
+    "name": "APIObject",
+    "properties": {
+      "MyName": {
+        "type": "string"
+      },
+      "Owner": {
+        "type": "Owner"
+      }
+    }
+  },
+  "APIProperty": {
+    "name": "APIProperty",
+    "properties": {
+      "Name": {
+        "type": "string"
+      },
+      "Value": {
+        "type": "string"
+      }
+    }
+  },
+  "AccountUser": {
+    "name": "AccountUser",
+    "properties": {
+      "Email": {
+        "type": "string"
+      },
+      "Name": {
+        "type": "string"
+      },
+      "UserID": {
+        "type": "string"
+      },
+      "UserPermissions": {
+        "type": "UserAccess"
+      }
+    }
+  },
+  "Owner": {
+    "name": "Owner",
+    "properties": {
+      "Address": {
+        "type": "string"
+      },
+      "Name": {
+        "type": "string"
+      },
+      "User": {
+        "type": "AccountUser"
+      }
+    }
+  },
+  "RetrieveRequest": {
+    "name": "RetrieveRequest",
+    "properties": {
+      "ObjectType": {
+        "type": "string"
+      },
+      "PartnerProperties": {
+        "type": "APIProperty"
+      },
+      "Properties": {
+        "type": "string"
+      },
+      "RepeatLastResult": {
+        "type": "boolean"
+      }
+    }
+  },
+  "RetrieveRequestMsg": {
+    "name": "RetrieveRequestMsg",
+    "properties": {
+      "RetrieveRequest": {
+        "type": "RetrieveRequest"
+      }
+    }
+  },
+  "RetrieveResponseMsg": {
+    "name": "RetrieveResponseMsg",
+    "properties": {
+      "OverallStatus": {
+        "type": "string"
+      },
+      "RequestID": {
+        "type": "string"
+      },
+      "Results": {
+        "type": "APIObject"
+      }
+    }
+  },
+  "UserAccess": {
+    "name": "UserAccess",
+    "properties": {
+      "Delete": {
+        "type": "number"
+      },
+      "Description": {
+        "type": "string"
+      },
+      "Name": {
+        "type": "string"
+      },
+      "Owner": {
+        "type": "Owner"
+      },
+      "Value": {
+        "type": "string"
+      }
+    }
+  },
+  "retrieveRequest": {
+    "name": "retrieveRequest",
+    "properties": {}
+  },
+  "retrieveResponse": {
+    "name": "retrieveResponse",
+    "properties": {}
+  }
+}

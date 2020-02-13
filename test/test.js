@@ -452,6 +452,30 @@ describe('Generate APIs and models with WSDLs containing ', function() {
         done();
       });
   });
+
+  it('Test complexReferences WSDL to avoid going into a loop', function(done) {
+    /*
+     * This tests covers the scenario where a chain of objects end up making a reference to a parent
+     * e.g. APIObject -> UserAccess -> Owner -> AccountUser -> UserAccess
+     */
+    var options = {};
+    var operations = [];
+    var url = './wsdls/complexReferences.wsdl';
+
+    WSDL.open(path.resolve(__dirname, url), options,
+      function(err, wsdl) {
+        var operation =
+          wsdl.definitions.bindings.SoapBinding.operations.Retrieve;
+        operations.push(operation);
+
+        var generatedModels = helper.generateModels(wsdl, operations);
+
+        var expectedModels = path.resolve(__dirname, './results/complexRef_model.json');
+        expectedModels = require(expectedModels);
+        expect(generatedModels).to.deep.equal(expectedModels);
+        done();
+      });
+  });
 });
 
 function readModelJsonSync(name) {
