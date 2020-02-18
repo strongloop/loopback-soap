@@ -1,3 +1,9 @@
+2020-02-18, Version 1.3.1
+=========================
+
+ * Put var assignment back inside if (Jonathan Roberts)
+
+
 2020-02-13, Version 1.3.0
 =========================
 
