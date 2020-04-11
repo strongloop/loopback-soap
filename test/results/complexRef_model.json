@@ -34,7 +34,7 @@
         "type": "string"
       },
       "UserPermissions": {
-        "type": "UserAccess"
+        "type": ["UserAccess"]
       }
     }
   },
@@ -59,10 +59,10 @@
         "type": "string"
       },
       "PartnerProperties": {
-        "type": "APIProperty"
+        "type": ["APIProperty"]
       },
       "Properties": {
-        "type": "string"
+        "type": ["string"]
       },
       "RepeatLastResult": {
         "type": "boolean"
@@ -87,7 +87,7 @@
         "type": "string"
       },
       "Results": {
-        "type": "APIObject"
+        "type": ["APIObject"]
       }
     }
   },
@@ -104,7 +104,7 @@
         "type": "string"
       },
       "Owner": {
-        "type": "Owner"
+        "type": ["Owner"]
       },
       "Value": {
         "type": "string"
