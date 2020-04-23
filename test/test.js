@@ -42,8 +42,17 @@ describe('Generate APIs and models with WSDLs containing ', function() {
         // check for API/operation signature in generated code
         var index = code.indexOf('StockQuoteServiceStockQuoteBinding.GetQuote = function(GetQuote, callback)'); // eslint-disable-line max-len
         assert.ok(index > -1);
+
         // check for beginning of REST API in generated code
         index = code.indexOf("StockQuoteServiceStockQuoteBinding.remoteMethod('GetQuote',"); // eslint-disable-line max-len
+        assert.ok(index > -1);
+
+        // check for utility method that gets JSON value of model at runtime; if available
+        index = code.indexOf('function normalize(parameter) {');
+        assert.ok(index > -1);
+
+        // check that utility method wraps parameter
+        index = code.indexOf('_soapModel.GetQuote(normalize(GetQuote), function (err, response)');// eslint-disable-line max-len
         assert.ok(index > -1);
 
         // verify generated models against expected
@@ -374,7 +383,7 @@ describe('Generate APIs and models with WSDLs containing ', function() {
         assert.ok(index > -1);
         index = code.indexOf("soapDataSource.once('connected', function ()");
         assert.ok(index > -1);
-        index = code.indexOf('_soapModel.CheckAddressW2lines(CheckAddressW2lines, function (err, response)'); // eslint-disable-line max-len
+        index = code.indexOf('_soapModel.CheckAddressW2lines(normalize(CheckAddressW2lines), function (err, response)'); // eslint-disable-line max-len
         assert.ok(index > -1);
         done();
       });
