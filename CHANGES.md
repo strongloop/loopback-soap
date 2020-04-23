@@ -1,3 +1,15 @@
+2020-04-23, Version 1.3.2
+=========================
+
+ * fix expected JSON for old test cases (Dominique Emond)
+
+ * Added array check (Dominique Emond)
+
+ * call parameter toJSON() method if it exists (Dominique Emond)
+
+ * Update LTS status in README (Miroslav Bajtoš)
+
+
 2020-02-18, Version 1.3.1
 =========================
 
