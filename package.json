@@ -31,13 +31,13 @@
     "eslint": "^6.0.1",
     "eslint-config-loopback": "^8.0.0",
     "loopback": "^3.25.1",
-    "mocha": "^5.2.0"
+    "mocha": "^8.2.1",
+    "strong-soap": "^3.0.0"
   },
   "license": "MIT",
   "dependencies": {
     "ejs": "^2.5.5",
     "lodash": "^4.17.11",
-    "strong-soap": "^1.19.0",
     "underscore.string": "^3.3.5"
   }
 }
