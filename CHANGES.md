@@ -1,3 +1,11 @@
+2020-11-26, Version 1.3.3
+=========================
+
+ * Mocha version that works on node 8 (Jonathan Roberts)
+
+ * Update dependencies (Jonathan Roberts)
+
+
 2020-04-23, Version 1.3.2
 =========================
 
