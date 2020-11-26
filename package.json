@@ -31,7 +31,7 @@
     "eslint": "^6.0.1",
     "eslint-config-loopback": "^8.0.0",
     "loopback": "^3.25.1",
-    "mocha": "^8.2.1",
+    "mocha": "^7.2.0",
     "strong-soap": "^3.0.0"
   },
   "license": "MIT",
