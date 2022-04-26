@@ -36,7 +36,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "ejs": "^2.5.5",
+    "ejs": "^3.1.7",
     "lodash": "^4.17.11",
     "underscore.string": "^3.3.5"
   }
